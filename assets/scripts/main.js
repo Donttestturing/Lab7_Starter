@@ -95,7 +95,7 @@ async function getRecipes() {
         //A8
         recipeArray.push(jsonResponse);
         //A9
-        promiseList.push(recipeURL);
+        promiseList.push(recipeURL);    //store each promise in list
 
        /* Promise.all(promiseList).finally(() => {
            saveRecipesToStorage(recipeArray);
