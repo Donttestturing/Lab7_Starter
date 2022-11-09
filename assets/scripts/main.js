@@ -96,21 +96,27 @@ async function getRecipes() {
         recipeArray.push(jsonResponse);
         //A9
         promiseList.push(recipeURL);
-        if(i === RECIPE_URLS.length-1){               //&& Promise.all(promiseList).state === 'resolved'
-          Promise.all(promiseList).finally(() => {
+
+       /* Promise.all(promiseList).finally(() => {
+           saveRecipesToStorage(recipeArray);
+           resolve(recipeArray);
+         });
+          */
+        if(i === RECIPE_URLS.length-1){             //all promises are now stored in the list
+          Promise.all(promiseList).finally(() => {      //once all are fulfilled, save them all to storage and resolve them too 
             saveRecipesToStorage(recipeArray);
             resolve(recipeArray);
           });
         }
-        
 
       } catch (error) {
+        //A10
         console.error(error);
+        //A11
         reject(error);
       }
+
     }
-
-
 
   });
   return recipeFetchPromise;
