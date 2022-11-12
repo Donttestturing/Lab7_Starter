@@ -41,23 +41,18 @@ self.addEventListener('fetch', function (event) {
   //            above (CACHE_NAME)
 
 
-
   event.respondWith(caches.open(CACHE_NAME).then((cache) => {
-      const cachedResponse = cache.match(event.request);
 
-      return cachedResponse.then(()=> {
-        if (cachedResponse){
-          return cachedResponse;
-        } else {
-         return fetch(event.request).then((fetchedResource) => {
-            cache.put(event.request, fetchedResource.clone());
-            return fetchedResource;
-        });
-        }
-      }
-    )
+    return cache.match(event.request).then((matchResource) => {
 
-  }));//*/
+      return matchResource || fetch(event.request).then((fetchedResource) => {
+        cache.put(event.request, fetchedResource.clone());
+        return fetchedResource;
+      });
+
+    });
+
+}));
 
   // B8. TODO - If the request is in the cache, return with the cached version.
   //            Otherwise fetch the resource, add it to the cache, and return
