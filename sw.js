@@ -40,6 +40,8 @@ self.addEventListener('fetch', function (event) {
   // B7. TODO - Respond to the event by opening the cache using the name we gave
   //            above (CACHE_NAME)
 
+
+
   event.respondWith(caches.open(CACHE_NAME).then((cache) => {
       const cachedResponse = cache.match(event.request);
 
@@ -48,7 +50,7 @@ self.addEventListener('fetch', function (event) {
           return cachedResponse;
         } else {
          return fetch(event.request).then((fetchedResource) => {
-            cache.put(event.request, fetchedResource);
+            cache.put(event.request, fetchedResource.clone());
             return fetchedResource;
         });
         }
