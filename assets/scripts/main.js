@@ -36,7 +36,7 @@ function initializeServiceWorker() {
   // EXPLORE - START (All explore numbers start with B)
   /*******************/
   // ServiceWorkers have many uses, the most common of which is to manage
-  // local caches, intercept network requests, and conditionally serve from
+  // local caches, intercept network requests, and conditionally serve from 
   // those local caches. This increases performance since users aren't
   // re-downloading the same resources every single page visit. This also allows
   // websites to have some (if not all) functionality offline! I highly
@@ -50,7 +50,7 @@ function initializeServiceWorker() {
       window.addEventListener('load', async () => {
         try{
           // B3
-          const swRegistration = await navigator.serviceWorker.register('./sw.js');
+          const swRegistration = await navigator.serviceWorker.register('./sw.js', {scope: './'});
           // B4
           if(swRegistration.active){
             console.log('Service worker was successfully registered')
@@ -58,7 +58,7 @@ function initializeServiceWorker() {
 
         } catch(error){
           // B5
-          console.log('Service worker failed to successfully registered')
+          console.log('Service worker failed to successfully register')
           console.error(error);
         }
       });
