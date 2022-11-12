@@ -41,10 +41,9 @@ self.addEventListener('fetch', function (event) {
   //            above (CACHE_NAME)
 
   event.respondWith(caches.open(CACHE_NAME).then(async (cache) => {
-
-   
       const cachedResponse = cache.match(event.request);
-      return cachedResponse.then((cachedResponse)=> {
+
+      return cachedResponse.then(async ()=> {
         if (cachedResponse){
           return cachedResponse;
         } else {
