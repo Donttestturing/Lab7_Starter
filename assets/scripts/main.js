@@ -53,6 +53,7 @@ function initializeServiceWorker() {
             //B4
             console.log(`Service worker was successfully registered: ${swRegistration}`);
           },
+          //B5
           (error) => {
             console.error(`Service worker failed to successfully register: ${error}`);
           });

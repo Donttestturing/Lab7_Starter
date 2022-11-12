@@ -42,7 +42,7 @@ self.addEventListener('fetch', function (event) {
 
 
   event.respondWith(caches.open(CACHE_NAME).then((cache) => {       //have to do it like this, like https://developer.chrome.com/docs/workbox/caching-strategies-overview/ says, cannot do it the initial way I was doing it
-
+    // B8
     return cache.match(event.request).then((matchResource) => {
 
       return matchResource || fetch(event.request).then((fetchedResource) => {
