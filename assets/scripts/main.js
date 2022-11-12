@@ -51,7 +51,7 @@ function initializeServiceWorker() {
           //B3
           navigator.serviceWorker.register('./sw.js').then((swRegistration) => {
             //B4
-            console.log('Service worker was successfully registered:', swRegistration);
+            console.log('Service worker was successfully registered: ${swRegistration}');
           },
           (error) => {
             console.error('Service worker failed to successfully register: ${error}');
