@@ -105,14 +105,12 @@ async function getRecipes() {
   let recipeFetchPromise = new Promise(async (resolve, reject) => {
     let promiseList = [];
     //A4
- //   for(let i = 0; i < RECIPE_URLS.length; i++){
+    for(let i = 0; i < RECIPE_URLS.length; i++){
       try {
-
         //Way Camdyn mentioned, utilizing promise.all heavily
-        let fetchingResponses = await Promise.all(RECIPE_URLS.map(url => fetch(url)));
-        return await Promise.all(fetchingResponses.json());
+        //let fetchingResponses = await Promise.all(RECIPE_URLS.map(url => fetch(url)));
+        //return await Promise.all(fetchingResponses.json());
 
-        /*
         //A6
         let recipeURL = await fetch(RECIPE_URLS[i]);
         //A7
@@ -127,7 +125,7 @@ async function getRecipes() {
             saveRecipesToStorage(recipeArray);
             resolve(recipeArray);
           });
-        }*/
+        }
 
       } catch (error) {
         //A10
@@ -136,7 +134,7 @@ async function getRecipes() {
         reject(error);
       }
 
- //   }
+    }
 
   });
   return recipeFetchPromise;
