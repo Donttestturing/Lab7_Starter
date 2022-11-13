@@ -109,7 +109,7 @@ async function getRecipes() {
       try {
 
         //Way Camdyn mentioned, utilizing promise.all heavily
-        let fetchingResponses = await Promise.all(RECIPES_URLS.map(url => fetch(url)));
+        let fetchingResponses = await Promise.all(RECIPE_URLS.map(url => fetch(url)));
         return await Promise.all(fetchingResponses.json());
 
         /*
